@@ -456,3 +456,8 @@ set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"
 "   endif¬
 " endfunction¬
 " inoremap <tab> <c-r>=Smart_TabComplete()<CR>¬
+
+
+" vroom settings
+let g:vroom_use_spring = 1
+let g:vroom_use_binstubs = 1
