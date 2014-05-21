@@ -2,7 +2,7 @@ gvim_rails_setup
 ================
 
 Just my settings for gvim/macvim.
-Copy .vimrc to ~/. all other files into ~/.vim directory
+Copy .vimrc and .gvimrc to ~/. all other files into ~/.vim directory
 
 
 Compile command-t plugin:
