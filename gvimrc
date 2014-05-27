@@ -1,1 +1,1 @@
-set guitablabel=%N\ %f%m
+set guitablabel=%N\ %t%m
