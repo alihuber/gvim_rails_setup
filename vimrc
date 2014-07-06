@@ -123,25 +123,25 @@ set notimeout ttimeout ttimeoutlen=200
 " Copy to Clipboard (on Unix)
 set clipboard+=unnamed
 "set clipboard+=+
- 
- 
+
+
 " Turn syntax highlighting on
 syntax on
- 
+
 " Highlight search results
 set hlsearch
- 
+
 " Turn on line numbering
 set number
- 
+
 " Make backspce behave more normally
 set backspace=indent,eol,start
- 
+
 " Turn on automatic indenting
 set smartindent
 
 " copy the previous indentation on autoindenting
-set copyindent   
+set copyindent
 
 " set show matching parenthesis
 set showmatch
@@ -151,7 +151,7 @@ set incsearch
 
 " Insert space characters whenever the tab key is pressed
 set expandtab
- 
+
 " Set tabs
 set tabstop=2
 " Spaces feel like Tabs
@@ -162,7 +162,7 @@ set shiftwidth=2
 set shiftround
 
 " remember more commands and search history
-set history=1000        
+set history=1000
 
 " use many muchos levels of undo
 set undolevels=1000
@@ -180,7 +180,6 @@ set noerrorbells         " don't beep
 set nobackup
 set noswapfile
 
-colorscheme desert
 set guifont=Monaco:h15
 set background=dark
 colorscheme solarized
@@ -329,6 +328,8 @@ noremap <S-TAB> <C-W>W
 " substitute word under cursor
 map <leader>s :%s/<c-r><c-w>//g<left><left>
 
+map <leader>g :vimgrep //gj ./**/*.*<left><left><left><left><left><left><left><left><left><left><left><left>
+
 "show register contents
 "map <leader>. :reg<cr>
 
@@ -398,6 +399,12 @@ map <leader><F9> :%s/\([gs]et\)\(\w\)\(\w\)/\1\U\2\L\3/g<cr><c-o>
 
 let g:ruby_doc_ruby_mapping='KK'
 
+nnoremap <leader>d :<c-u>call MultiCursorPlaceCursor()<cr>
+nnoremap <leader>e :<c-u>call MultiCursorManual()<cr>
+nnoremap <Esc> :<c-u>call MultiCursorRemoveCursors()<cr>
+let g:multicursor_quit = "<Esc>"
+
+
 " FILE TYPE SETTINGS
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
@@ -458,6 +465,6 @@ set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"
 " inoremap <tab> <c-r>=Smart_TabComplete()<CR>¬
 
 
-" vroom settings
+" vroom and tmux settings
 let g:vroom_use_spring = 1
 let g:vroom_use_binstubs = 1
