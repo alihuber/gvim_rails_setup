@@ -468,3 +468,5 @@ set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"
 " vroom and tmux settings
 let g:vroom_use_spring = 1
 let g:vroom_use_binstubs = 1
+let g:vroom_use_vimux = 1
+let g:VimuxHeight = "100"
