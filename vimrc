@@ -442,6 +442,12 @@ set includeexpr+=substitute(v:fname,'s$','','g')
 "so ~/.companyrelatedvimrc
 
 
+" ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+
 set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"
 
 " function! Smart_TabComplete()
