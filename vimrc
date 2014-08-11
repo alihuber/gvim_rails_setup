@@ -7,6 +7,8 @@ let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
 set tags=tags;/
+" remap jump back from tag definition
+map <C-P> <C-T>
 
 " Needed on some linux distros.
 " see http://www.adamlowe.me/2009/12/vim-destroys-all-other-rails-editors.html
@@ -224,8 +226,8 @@ imap jk <Esc>
 set pastetoggle=<F2>
 
 " Quickly edit/reload the vimrc file
-nmap <silent> <F5> :e $MYVIMRC<CR>
-nmap <silent> <S-F5> :so $MYVIMRC<CR>
+nmap <silent> <F6> :e $MYVIMRC<CR>
+nmap <silent> <S-F6> :so $MYVIMRC<CR>
 
 " change the mapleader from \ to ,
 let mapleader=","
@@ -277,14 +279,6 @@ nmap < <<
 nmap > >>
 vmap < <gv
 vmap > >gv
-
-" allow command line editing like emacs
-cnoremap <C-A>      <Home>
-cnoremap <C-B>      <Left>
-cnoremap <C-E>      <End>
-cnoremap <C-F>      <Right>
-cnoremap <C-N>      <End>
-cnoremap <C-P>      <Up>
 
 " remap Y to behave like C or D...
 map Y y$
