@@ -42,8 +42,11 @@ filetype plugin indent on
 imap <c-j> <c-x><c-o>
 " Better command-line completion
 set wildmenu
-set wildignore+=*.pyc,*.zip,*.gz,*.bz,*.tar,*.jpg,*.png,*.gif,*.avi,*.wmv,*.ogg,*.mp3,*.mov,*.git*
+set wildignore+=*.pyc,*.zip,*.gz,*.bz,*.tar,*.jpg,*.png,*.gif,*.avi,*.wmv,*.ogg,*.mp3,*.mov,*.git*,*.swp,*.bak,*.class
 set wildmode=list:longest,full
+
+" max indexed files by command-t
+let g:CommandTMaxFiles=50000
 
 " Completion settings in insertmode
 set complete=.,w,b,t,i
@@ -174,8 +177,6 @@ set history=1000
 set undolevels=1000
 set undofile
 set undodir=~/.undofilesvim
-
-set wildignore=*.swp,*.bak,*.pyc,*.class
 
 " change the terminal's title
 set title
