@@ -102,7 +102,11 @@ set sidescrolloff=5
 set sidescroll=1
 
 " keep cursor distanced 3 lines till window ends
-set scrolloff=3
+set scrolloff=0
+
+" scroll downwards with ctrl-z instead of ctrl-y
+nnoremap <C-z> <C-y>
+
 " --- History Options
 
 " Viminfo File
