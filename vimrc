@@ -171,6 +171,10 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 
+" indent-guides settings
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size  = 1
+
 " when at 3 spaces, and I hit tab go to 4, not 5
 set shiftround
 
