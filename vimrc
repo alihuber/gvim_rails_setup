@@ -1,542 +1,340 @@
-set shell=/bin/bash\ -i
-set ruler
-set colorcolumn=80
-set showmode
-" session handling
-let g:session_autosave = 'no'
-let g:session_autoload = 'no'
-
-set tags=tags;/
-" remap jump back from tag definition
-map <C-P> <C-T>
-
-" Needed on some linux distros.
-" see http://www.adamlowe.me/2009/12/vim-destroys-all-other-rails-editors.html
-map <D-]> :maca _cycleWindows:<CR>
-map <D-[> :maca _cycleWindowsBackwards:<CR>
-
-" The set nocompatible setting makes vim behave in a more useful way
-set nocompatible
-
-" include bundle with pathogen
-
-filetype off
-call pathogen#infect()
-call pathogen#helptags()
-
-" These are highly recommended options.
-set enc=utf-8
-
-" be able to have hidden buffers
-set hidden
-
-" Show partial commands while typing
-set showcmd
-
-" Enable filetype-specific indenting and plugins
-filetype plugin indent on
-
-" ##### COMPLETION
-"set ofu=syntaxcomplete#Complete
-
-imap <c-j> <c-x><c-o>
-" Better command-line completion
-set wildmenu
-set wildignore+=*.pyc,*.zip,*.gz,*.bz,*.tar,*.jpg,*.png,*.gif,*.avi,*.wmv,*.ogg,*.mp3,*.mov,*.git*,*.swp,*.bak,*.class
-set wildmode=list:longest,full
-
-" max indexed files by command-t
-let g:CommandTMaxFiles=50000
-
-" Completion settings in insertmode
-set complete=.,w,b,t,i
-
-" shorten messages + no welcome screen at startup; see :h shortmess for more
-" info
-set shortmess=atIoOTts
-
-" hightlight cursor line
-set cul
-
-" not only backspace and cursor can go lines up or own
-set ww=<,>,[,],h,l
-
-" Stop certain movements from always going to the first character of a line.
-" While this behaviour deviates from that of Vi, it does what most users
-" coming from other editors would expect.
-set nostartofline
-
-" Use case insensitive search, except when using capital letters
-set ignorecase
-set smartcase
-
-" --- Statusline Options
-set statusline= "clear it first
-
-" statusline
-"set statusline=%<%F%h%m%r%h%w%y\ %{&ff}\ %=\ lin:%l\,%L\ col:%c%V\ pos:%o\ ascii:%b\ %P
-if has("statusline")
- set statusline=%<%f\ %h%m%r%=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%k\ %-14.(%l,%c%V%)\ %P
-endif
-
-
-" Always display the status line, even if only one window is displayed
-set laststatus=2
-
-" Set the command window height to 1 lines
-set cmdheight=1
-
-" but don't split words
-set lbr
-
-"show this in front of broken lines
-set showbreak=…
-
-" got scrolling problems? uncomment this
-set ttyfast
-set ttyscroll=1 " speed
-set lazyredraw " to avoid scrolling problems
-
-" show stuff at the left if not wrapping
-set sidescrolloff=5
-set sidescroll=1
-
-" keep cursor distanced 3 lines till window ends
-set scrolloff=0
-
-" scroll downwards with ctrl-z instead of ctrl-y
-nnoremap <C-z> <C-y>
-
-" --- History Options
-
-" Viminfo File
-" Tell vim to remember certain things when we exit
-"  '50  :  marks will be remembered for up to 50 previously edited files
-"  "100 :  will save up to 100 lines for each register
-"  :100  :  up to 100 lines of command-line history will be remembered
-"  %    :  saves and restores the buffer list
-"  n... :  where to save the viminfo files
-set viminfo='50,\"100,:100,n~/.viminfo
-
-" automatically read file changed outside of Vim
-set autoread
-
-" Instead of failing a command because of unsaved changes, instead raise a
-" dialogue asking if you wish to save changed files.
-set confirm
-
-" Modelines have historically been a source of security vulnerabilities.  As
-" such, it may be a good idea to disable them and use the securemodelines
-" script, <http://www.vim.org/scripts/script.php?script_id=1876>.
-set nomodeline
-
-" Quickly time out on keycodes, but never time out on mappings
-set notimeout ttimeout ttimeoutlen=200
-
-" Copy to Clipboard (on Unix)
-set clipboard+=unnamed
-"set clipboard+=+
-
-
-" Turn syntax highlighting on
-syntax on
-
-" Highlight search results
-set hlsearch
-
-" Turn on line numbering
-set number
-
-" Make backspce behave more normally
-set backspace=indent,eol,start
-
-" Turn on automatic indenting
-set smartindent
-
-" copy the previous indentation on autoindenting
-set copyindent
-
-" set show matching parenthesis
-set showmatch
-
-" show search matches as you type
-set incsearch
-
-" Insert space characters whenever the tab key is pressed
-set expandtab
-
-" Set tabs
-set tabstop=2
-" Spaces feel like Tabs
-set softtabstop=2
-set shiftwidth=2
-
-" indent-guides settings
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size  = 1
-
-" when at 3 spaces, and I hit tab go to 4, not 5
-set shiftround
-
-" remember more commands and search history
-set history=1000
-
-" use many muchos levels of undo
-set undolevels=1000
-set undofile
-set undodir=~/.undofilesvim
-
-" change the terminal's title
-set title
-
-set visualbell           " don't beep
-set noerrorbells         " don't beep
-
-set nobackup
-set noswapfile
-
-set guifont=Monaco:h15
-set background=dark
-colorscheme solarized
-let g:solarized_contrast="high"    "default value is normal
-let g:solarized_visibility="high"
-" if &t_Co >= 256 || has("gui_running")
-"      colorscheme codeburn
-" endif
-
-if &t_Co > 2 || has("gui_running")
-     " switch syntax highlighting on, when the terminal has colors
-    syntax on
-endif
-
-" highlight unwanted spaces
-set list!
-"set listchars=tab:▷ ,trail:⋅,nbsp:⋅
-"set listchars=eol:¬,nbsp:⋅,tab:>-,trail:⋅,extends:>,precedes:<
-set list listchars=tab:»-,trail:·,extends:»,precedes:«
-
-
-" MAPPINGS "
-
-" each html tag at its own line
-map <F7> :s/<[^>]*>/\r&\r/g<enter>
-map <S-F7> :%s/<[^>]*>/\r&\r/g<enter>
-
-" search for visually highlighted text
-vmap // y/<C-R>"<CR>
-
-map ,f :set foldmethod=indent<cr>zM<cr>
-map ,F :set foldmethod=manual<cr>zR<cr>
-
-" get out of insert mode
-imap jk <Esc>
-
-" toggle paste mode for code blocks in insert mode
-set pastetoggle=<F2>
-
-" Quickly edit/reload the vimrc file
-nmap <silent> <F6> :e $MYVIMRC<CR>
-nmap <silent> <S-F6> :so $MYVIMRC<CR>
-
-" change the mapleader from \ to ,
+" *********************************************************************
+" Reminders
+" *********************************************************************
+" nmap     = map a key sequence when in normal mode
+" <silent> = don't show a message when key sequence is used
+" Keycodes
+" http://vimdoc.sourceforge.net/htmldoc/intro.html#key-notation
+" Omnicomplete
+" <c-x><c-o> Language-wise omnicompletion
+" <c-p> Tagfile/Buffer-wise omnicompletion
+" Re-index Command-t:
+" :CommandTFlush or <leader>t<c-f>
+
+
+" Change the mapleader from \ to ,
+" leader has to be set on top of file to be used later on
 let mapleader=","
 
-" save with strg-s
-map <c-s> <esc>:w<cr>
-imap <c-s> <esc>:w<cr>a
-
-" Use Q for formatting the current paragraph (or selection)
-vmap Q gq
-nmap Q gqap
-
-" j and k act in virtual lines
-nnoremap j gj
-nnoremap k gk
-
-" Easy window navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
-" be able to write files with sudo
-" cmap w!! w !sudo tee % >/dev/null
-
-" wrapping toggle
-" map <leader>w :set nowrap!<CR>
-
-" Copy paste
-map <leader>p "+p
-cmap <leader>p <C-R>+
-vnoremap <leader>y "+y
-
-" fast closing of html tags
-imap ;; </<Esc>a<c-x><c-o><c-l>
-
-" Remappings
-
-" Open help for word under cursor
-map <F1> <ESC>:exec "help ".expand("<cword>")<CR>
-" grep for a word in help
-:nnoremap <s-F1>  :helpgrep<space>
-
-map <s-space> <ESC>:exec "Ack ".expand("<cword>")<CR>
-
-" grep for a word in help
-" Nice Indentation by Shift-h/l
-nmap < <<
-nmap > >>
-vmap < <gv
-vmap > >gv
-
-" remap Y to behave like C or D...
-map Y y$
-
-" delete char after cursor in insert mode, same as del key
-inoremap <c-l> <del>
-
-" jump to line AND column
-nnoremap ' `
-nnoremap ` '
-
-" center match
-map n nzz
-map N Nzz
-
-" tag bindings
-nmap <cr> <c-w>g}
-nmap <s-cr> <c-]>
-nmap <c-cr> <c-t>
-
-" display marks and jump to entered number
-map <leader>m :marks<cr>:normal `
-
-"cd to Projects directory
-" map <leader>d :cd ~/git/
-
-" save with strg-s
-map <c-s> <esc>:w<cr>
-imap <c-s> <esc>:w<cr>a
-
-" move to next or previous buffer with ALT+hl
-nmap <m-h> :bp<cr>
-nmap <m-l> :bn<cr>
-
-" Window resizing mappings
-map <up> <C-W>-
-map <down> <C-W>+
-map <left> <c-w><
-map <right> <c-w>>
-
-" cicle through windows with tab
-noremap <TAB>   <C-W>w
-noremap <S-TAB> <C-W>W
-
-" substitute word under cursor
-map <leader>s :%s/<c-r><c-w>//g<left><left>
-
-map <leader>g :vimgrep //gj ./**/*.*<left><left><left><left><left><left><left><left><left><left><left><left>
-
-"show register contents
-"map <leader>. :reg<cr>
-
-"switch between relativ and absolute line numbers - try it!
-"nnoremap <leader>l :call g:ToggleNuMode()<cr>
-
-"function! g:ToggleNuMode()
-"if(&rnu == 1)
-"set nu
-"else
-"set rnu
-"endif
-"endfunc
-
-"PLUGIN SETTINGS
-
-" Tagbar
-" nnoremap <silent> <leader>; :TagbarToggle<cr>
-
-let g:acp_completeOption = '.,w,b,t,i,k'
-
-" i want to switch windows with ctrl tab, not buffers
-let g:Tb_cTabSwitchBufs = 0
-
-" PLUGIN MAPPINGS
-" ZEN
-
-" ACK
-map <leader>a :Ack!
+" Automatic reloading of .vimrc upon saving
+augroup reload_vimrc " {
+ autocmd!
+ autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
 
 
-" rails
-" go to controller test etc
-map <leader>ra :A<cr>
+" *********************************************************************
+" Plugins
+" *********************************************************************
+" Additional Plugins in ~/.vim/plugins directory: IndexedSearch.vim,
+" for displaying 'Match n of m'-messages while searching
+
+" Be iMproved, required
+set nocompatible
+" Required for vundle
+filetype off
+" ---- Vundle setup
+" Set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" Programming-language/environment specific settings in ./vimsauce/*.vimrc files
+Plugin 'joonty/vim-sauce'
+" Solarized colors
+Plugin 'altercation/vim-colors-solarized'
+" NERDTree plugin
+Plugin 'scrooloose/nerdtree'
+" Buffer explorer
+Plugin 'jlanzarotta/bufexplorer'
+" Airline statusline plugin
+Plugin 'bling/vim-airline'
+" Show most recent used files
+Plugin 'vim-scripts/mru.vim'
+" Needed for vim-session plugin
+Plugin 'xolox/vim-misc'
+" Session-Management: Open/SaveSession foo
+Plugin 'xolox/vim-session'
+" <leader>t fuzzy file search
+Plugin 'wincent/command-t'
+" Expands visual selection to next text object by repeating v
+Plugin 'terryma/vim-expand-region'
+" Undo tree, file changes over time
+Plugin 'sjl/gundo.vim'
+" Explore clipboard contents
+Plugin 'vim-scripts/YankRing.vim'
+" Show function/code block scope hints, toggle with <leader>ig
+Plugin 'nathanaelkane/vim-indent-guides'
+" Adds surroundings mnemonics ("Hello world") cs"' change surroundings -> 'Hello world'
+Plugin 'tpope/vim-surround'
+" Automatic closing of brackets
+Plugin 'Raimondi/delimitMate'
+" Commenting of lines/paragraphs with movement/text objects/counts, mapped to \\\ and gcc (gcap)
+Plugin 'tpope/vim-commentary'
+" Vim-Ruby plugin, adds shift-enter for blocks/methods, ]m next method, cim (change in method), vim (visual in method) etc.
+Plugin 'vim-ruby/vim-ruby'
+" Automatic 'end' insertion for Ruby development
+Plugin 'tpope/vim-endwise'
+" % matching for do ... end, if ... elsif .. end, RSpec's describe "" do ... end etc.
+Plugin 'tmhedberg/matchit'
+" CoffeeScript plugin
+Plugin 'kchmck/vim-coffee-script'
+" Slim template plugin
+Plugin 'slim-template/vim-slim'
+" Fugitive Git plugin for displaying git branch in Airline status bar
+Plugin 'tpope/vim-fugitive'
+" Git 'gutter' line changes indicators on the left, also used by Airline.
+" Next/previous changed line: ]c/[c
+" Stage line:        <leader>hs
+" Revert stage:      <leader>hr
+" Diff line changes: <leader>hp
+Plugin 'airblade/vim-gitgutter'
+" UltiSnips Plugin
+Plugin 'SirVer/ultisnips'
+" Snippets are separated from the UltiSnips engine.
+Plugin 'honza/vim-snippets'
+" MultiCursor Plugin <leader><d> place, <leader><e> edit, *no* <enter> needed
+Plugin 'paradigm/vim-multicursor'
+" TagBar Plugin
+Plugin 'majutsushi/tagbar'
+" Run RSpec tests out of vim, <leader>r whole file, <leader>R nearest, <leader> l latest
+Plugin 'skalnik/vim-vroom'
+" Python development
+Plugin 'klen/python-mode'
 
 
-" go to controller helper etc
-map <leader>rr :R<cr>
-" open in browser
-map <leader>rp :Rpreview<space>
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
-map <leader>rf :find<space>
-map <leader>rc :Rcontroller<cr>
-map <leader>rh :Rhelper<cr>
-map <leader>rl :Rlayout<cr>
-map <leader>rd :Rmigration<cr>
-map <leader>rm :Rmodel<cr>
-map <leader>rs :Rstylesheet<cr>
-map <leader>rv :Rview<cr>
-map <leader>rj :Rjavascript<cr>
-map <leader>re :Rextract<space>
+" ---- Solarized settings
+set background=dark
+" set usable colors when vim (not gvim) is started in terminal
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+colorscheme solarized
+let g:solarized_contrast="high" "default value is normal
+let g:solarized_visibility="high"
 
-" NERDTree
+" ---- NERDTree
 map <leader>n :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
-" toggle the Gundo window
+" ---- Vim-Session plugin settings
+let g:session_autosave = 'no'
+let g:session_autoload = 'no'
+
+" ---- Command-T plugin settings
+" max indexed files
+let g:CommandTMaxFiles=50000
+
+" ---- Toggle Gundo tree
 map <leader>u :GundoToggle<cr>
 
-" most recent files
+" ---- Toggle YankRing
+nmap <leader>y :YRShow<cr>
+
+" ---- Toggle BufExplorer
+nmap <leader>B :BufExplorer<cr>
+
+" ---- Toggle most recent files
 map <leader><enter> :Mru<cr>
 
-" show yankring
-nmap <leader>y :YRShow<cr>
-map <leader><F8> ?get<cr>lll~/set<cr>nlll~
-map <leader><F9> :%s/\([gs]et\)\(\w\)\(\w\)/\1\U\2\L\3/g<cr><c-o>
+" ---- Vim-Expand-Region
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
-let g:ruby_doc_ruby_mapping='KK'
+" ---- Indent-Guides settings
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size  = 1
 
+" ---- Airline status bar settings
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_extensions                    = ['branch', 'hunks']
+let g:airline#extensions#branch#enabled     = 1
+let g:airline#extensions#hunks#enabled      = 1
+let g:airline#extensions#hunks#hunk_symbols = ['+', '~', '-']
+let g:airline_theme                         ='powerlineish'
+let g:airline_left_sep                      =''
+let g:airline_right_sep                     =''
+let g:airline_symbols.branch                = '⎇'
+
+" ---- UltiSnips settings
+let g:UltiSnipsExpandTrigger="<c-space>"
+let g:UltiSnipsJumpForwardTrigger="<c-space>"
+let g:UltiSnipsJumpBackwardTrigger="<c-s-space>"
+
+" ---- MultiCursor settings
 nnoremap <leader>d :<c-u>call MultiCursorPlaceCursor()<cr>
 nnoremap <leader>e :<c-u>call MultiCursorManual()<cr>
 nnoremap <Esc> :<c-u>call MultiCursorRemoveCursors()<cr>
 let g:multicursor_quit = "<Esc>"
 
+" ---- TagBar settings
+nmap <F8> :TagbarToggle<CR>
 
-" FILE TYPE SETTINGS
-au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+" ---- vroom settings
+let g:vroom_use_colors = 1
 
-" RoR
-map <F9> <Esc>:set filetype=html.eruby-rails.eruby<cr>
-let g:rubycomplete_rails = 1
-autocmd FileType eruby set filetype=html.eruby-rails.eruby
-autocmd FileType html set filetype=html.eruby-rails.eruby
-autocmd FileType ruby set filetype=ruby.ruby-rails
-"ruby
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-map <f5> :w<CR>:!ruby %<CR>
-"improve autocomplete menu color
+
+" *********************************************************************
+" Basic editor configuration
+" *********************************************************************
+" Shorten messages + no welcome screen at startup
+set shortmess=atIoOTts
+" Get out of insert mode without esc
+imap jk <Esc>
+" Encoding
+set enc=utf-8
+" Be able to have hidden buffers
+set hidden
+" Shell to execute scripts
+set shell=/bin/bash\ -i
+" Better command-line completion (e.g. :color <tab>)
+set wildmenu
+set wildignore+=*.pyc,*.zip,*.gz,*.bz,*.tar,*.jpg,*.png,*.gif,*.avi,*.wmv,*.ogg,*.mp3,*.mov,*.git*,*.swp,*.bak,*.class
+set wildmode=list:longest,full
+" Automatically read file changed outside of Vim
+set autoread
+" Don't create swp and ~ files
+set nobackup
+set noswapfile
+" Standard name of ctags file, normally in project root
+set tags=tags;/
+
+
+" *********************************************************************
+" GUI and movement settings
+" *********************************************************************
+" Set syntax hightlighting on
+syntax on
+" Show entered commands in lower right corner like multipliers etc.
+set showcmd
+" Blink on matching parenthesis
+set showmatch
+" Instead of failing a command because of unsaved changes, instead raise a dialogue asking if you wish to save changed files.
+set confirm
+" Modelines have historically been a source of security vulnerabilities.  As such, it may be a good idea to disable them and use the securemodelines script.
+set nomodeline
+" Don't show mode a second time (done by Airline)
+set noshowmode
+" Hightlight cursor line
+set cul
+" Highlight unwanted spaces
+set list!
+set list listchars=tab:»-,trail:·,extends:»,precedes:«
+" Set line numbers
+set number
+" Sets cursor info in lower right corner (line number, column number, %-position in document)
+set ruler
+" Shows 80 chars indicator
+set colorcolumn=80
+" Don't beep
+set visualbell
+set noerrorbells
+" Font setting
+set guifont=Monaco:h14
+" Prevent cursor from moving to start of line when jumping between lines in buffer
+set nostartofline
+" Use case insensitive search, except when using capital letters
+set ignorecase
+set smartcase
+" Highlight search results
+set hlsearch
+" Highlight search results as you type
+set incsearch
+" Set the command window height to 1 lines
+set cmdheight=1
+" Always display the status line, even if only one window is displayed
+set laststatus=2
+" Show dots in front of line breaks
+set showbreak=…
+" j and k act on virtual lines (be able to move up into a wrapped line)
+nnoremap j gj
+nnoremap k gk
+
+
+" *********************************************************************
+" Omnicompletion (Ctrl-p) settings
+" *********************************************************************
+" Completion settings in insert mode
+" . = current buffer
+" w = buffers in other windows
+" b = other loaded buffers
+" u = unloaded buffers
+" t = tags
+" i = included files
+set complete=.,w,b,t,i
+" Improve omnicompletion menu color
 highlight Pmenu ctermbg=238 gui=bold
+" In omnicompletion box: don't replace entered text with suggestion
+set completeopt=longest,menuone
 
 
-" rails paths for gf to jump to classes
-map <F11> <Esc>:set suffixesadd=.rb<CR>gf
-map <F12> <Esc>:set suffixesadd=.html.erb<CR>gf
-set suffixesadd=.rb
-set includeexpr+=substitute(v:fname,'s$','','g')
-" or you can add substitution pattern s/ies$/y/g, s/ves$/f/g like this:
-" set includeexpr+=substitute(substitute(substitute(v:fname,'s$','','g'),'ie$','y','g'),'ve$','f','g')
-
-" omnicompletion
-"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-"autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-
-"let g:Powerline_symbols = 'fancy'
-"so ~/.companyrelatedvimrc
-
-
-" ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" *********************************************************************
+" Undo and history settings
+" *********************************************************************
+" remember more commands and search history
+set history=1000
+set undolevels=1000
+set undofile
+set undodir=~/.undofilesvim
+" Viminfo file
+" Tell vim to remember certain things when we exit
+" '50  :  marks will be remembered for up to 50 previously edited files
+" "100 :  will save up to 100 lines for each register
+" :100  :  up to 100 lines of command-line history will be remembered
+" %    :  saves and restores the buffer list
+" n... :  where to save the viminfo files
+set viminfo='50,\"100,:100,n~/.viminfo
 
 
-set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"
-
-" function! Smart_TabComplete()
-"   let line = getline('.')                         " current line¬
-"   let substr = matchstr(substr, "[^ \t]*$")       " word till cursor¬
-"   if (strlen(substr)==0)                          " nothing to match on empty string¬
-"     return "\<tab>"¬
-"   endif¬
-"   let has_period = match(substr, '\.') != -1      " position of period, if any¬
-"   let has_gt = match(substr, '\>') != -1       " position of slash, if any¬
-"   if ( has_gt )¬
-"     return "\<C-X>\<C-O>"                         " file matching¬
-"   elseif (!has_period && !has_slash)¬
-"     return "\<C-X>\<C-P>"                         " existing text matching¬
-"   elseif ( has_slash )¬
-"     return "\<C-X>\<C-F>"                         " file matching¬
-"   else¬
-"     return "\<C-X>\<C-O>"                         " plugin matching¬
-"   endif¬
-" endfunction¬
-" inoremap <tab> <c-r>=Smart_TabComplete()<CR>¬
+" *********************************************************************
+" Global tab/spaces/indentation settings. Settings per environment/programming
+" language are set in specific 'sauce' files managed by vim-sauce plugin.
+" *********************************************************************
+" Insert space characters whenever the tab key is pressed
+set expandtab
+" When at 3 spaces, and I hit tab go to 4 not 5
+set shiftround
+" Turn on automatic indenting
+set smartindent
+" Copy the previous indentation on autoindenting
+set copyindent
 
 
-" vroom and tmux settings
-let g:vroom_use_spring = 1
-let g:vroom_use_binstubs = 1
-let g:vroom_use_vimux = 1
-let g:VimuxHeight = "100"
+" *********************************************************************
+" Global remappings
+" *********************************************************************
+" Scroll downwards with Ctrl-z instead of Ctrl-y, don't overwrite tab
+nnoremap <C-z> <C-y>
+" Window switching: Ctrl + movement
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+" Copy and paste with <leader>-<y>(ank) and <leader>-<p>(aste)
+map <leader>p "+p
+cmap <leader>p <C-R>+
+vnoremap <leader>y "+y
+" Allows to paste clipboard content of operating system with above command
+set clipboard+=unnamed
+" Substitute word under cursor
+map <leader>s :%s/<c-r><c-w>//g<left><left>
+" Window resizing mappings, also disables the arrow keys
+map <up> <C-W>-
+map <down> <C-W>+
+map <left> <c-w><
+map <right> <c-w>>
 
+" Ctags -  Remap jump back from tag definition to Ctrl-P
+map <C-P> <C-T>
 
-
-" Preserve noeol (missing trailing eol) when saving file. In order
-" to do this we need to temporarily 'set binary' for the duration of
-" file writing, and for DOS line endings, add the CRs manually.
-" For Mac line endings, also must join everything to one line since it doesn't
-" use a LF character anywhere and 'binary' writes everything as if it were Unix.
-
-" This works because 'eol' is set properly no matter what file format is used,
-" even if it is only used when 'binary' is set.
-
-augroup automatic_noeol
-  au!
-  au BufWritePre  * call <SID>TempSetBinaryForNoeol()
-  au BufWritePost * call <SID>TempRestoreBinaryForNoeol()
-augroup END
-
-function! s:TempSetBinaryForNoeol()
-  let s:save_binary = &binary
-  if ! &eol && ! &binary
-    let s:save_view = winsaveview()
-    setlocal binary
-    if &ff == "dos" || &ff == "mac"
-      if line('$') > 1
-        undojoin | exec "silent 1,$-1normal! A\<C-V>\<C-M>"
-      endif
-    endif
-    if &ff == "mac"
-      undojoin | %join!
-      " mac format does not use a \n anywhere, so we don't add one when writing
-      " in binary (which uses unix format always). However, inside the outer
-      " if statement, we already know that 'noeol' is set, so no special logic
-      " is needed.
-    endif
-  endif
-endfunction
-
-function! s:TempRestoreBinaryForNoeol()
-  if ! &eol && ! s:save_binary
-    if &ff == "dos"
-      if line('$') > 1
-        " Sometimes undojoin gives errors here, even when it shouldn't.
-        " Suppress them for now...if you can figure out and fix them instead,
-        " please update http://vim.wikia.com/wiki/VimTip1369
-        silent! undojoin | silent 1,$-1s/\r$//e
-      endif
-    elseif &ff == "mac"
-      " Sometimes undojoin gives errors here, even when it shouldn't.
-      " Suppress them for now...if you can figure out and fix them instead,
-      " please update http://vim.wikia.com/wiki/VimTip1369
-      silent! undojoin | silent %s/\r/\r/ge
-    endif
-    setlocal nobinary
-    call winrestview(s:save_view)
-  endif
-endfunction
+" 12<Enter> jump to line 12, <Enter>=end of file, <Backspace>=beginning of file
+nnoremap <CR> G
+nnoremap <BS> gg

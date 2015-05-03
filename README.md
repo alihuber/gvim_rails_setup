@@ -2,8 +2,6 @@ gvim_rails_setup
 ================
 
 Just my settings for gvim/macvim.
-Copy .vimrc and .gvimrc to ~/. all other files into ~/.vim directory
-
 
 Compile command-t plugin:
 
@@ -12,6 +10,5 @@ Compile command-t plugin:
     ruby extconf.rb
     make
 
-and in vim:
-
-    :call pathogen#helptags()
+Plugins are installed via Vundle:
+`:PluginInstall`
