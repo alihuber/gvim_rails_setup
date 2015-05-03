@@ -26,7 +26,7 @@ augroup END " }
 " *********************************************************************
 " Plugins
 " *********************************************************************
-" Additional Plugins in ~/.vim/plugins directory: IndexedSearch.vim,
+" Additional Plugins in ~/.vim/plugin directory: IndexedSearch.vim,
 " for displaying 'Match n of m'-messages while searching
 
 " Be iMproved, required
