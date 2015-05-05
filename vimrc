@@ -26,7 +26,7 @@ augroup END " }
 " *********************************************************************
 " Plugins
 " *********************************************************************
-" Additional Plugins in ~/.vim/plugin directory: IndexedSearch.vim,
+" Additional plugins in ~/.vim/plugin directory: IndexedSearch.vim,
 " for displaying 'Match n of m'-messages while searching
 
 " Be iMproved, required
@@ -38,7 +38,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" call vundle#begin('~/some/path/here')
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
@@ -106,7 +106,7 @@ Plugin 'skalnik/vim-vroom'
 Plugin 'klen/python-mode'
 
 
-" All of your Plugins must be added before the following line
+" All of your plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -119,7 +119,7 @@ colorscheme solarized
 let g:solarized_contrast="high" "default value is normal
 let g:solarized_visibility="high"
 
-" ---- NERDTree
+" ---- NERDTree plugin settings
 map <leader>n :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
@@ -127,8 +127,7 @@ let NERDTreeShowHidden=1
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
-" ---- Command-T plugin settings
-" max indexed files
+" ---- Command-T plugin settings: max indexed files
 let g:CommandTMaxFiles=50000
 
 " ---- Toggle Gundo tree
@@ -143,7 +142,7 @@ nmap <leader>B :BufExplorer<cr>
 " ---- Toggle most recent files
 map <leader><enter> :Mru<cr>
 
-" ---- Vim-Expand-Region
+" ---- Vim-Expand-Region mappings
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
@@ -311,9 +310,9 @@ set copyindent
 " *********************************************************************
 " Global remappings
 " *********************************************************************
-" Scroll downwards with Ctrl-z instead of Ctrl-y, don't overwrite tab
+" Scroll downwards with Ctrl-z instead of Ctrl-y
 nnoremap <C-z> <C-y>
-" Window switching: Ctrl + movement
+" Window switching: Ctrl + movement, don't overwrite tab
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
@@ -332,7 +331,7 @@ map <down> <C-W>+
 map <left> <c-w><
 map <right> <c-w>>
 
-" Ctags -  Remap jump back from tag definition to Ctrl-P
+" ctags -  Remap jump back from tag definition to Ctrl-P
 map <C-P> <C-T>
 
 " 12<Enter> jump to line 12, <Enter>=end of file, <Backspace>=beginning of file
