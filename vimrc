@@ -104,7 +104,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'paradigm/vim-multicursor'
 " TagBar Plugin
 Plugin 'majutsushi/tagbar'
-" Run RSpec tests out of vim, <leader>r whole file, <leader>R nearest, <leader> l latest
+" Run RSpec tests out of vim
 Plugin 'skalnik/vim-vroom'
 " Vimux plugin for controlling tmux out of vim
 Plugin 'benmills/vimux'
@@ -185,23 +185,29 @@ let g:multicursor_quit = "<Esc>"
 " ---- TagBar settings
 nmap <F8> :TagbarToggle<CR>
 
-" ---- vroom settings
+" ---- Vroom settings
+" Overwrite standard mappings
+let g:vroom_map_keys = 0
 let g:vroom_use_colors = 1
 let g:vroom_use_vimux = 1
 
 "---- vimux settings
+" Run current RSpec file
+map <Leader>rf :VroomRunTestFile<CR>
+" Run nearest RSpec test
+map <Leader>rn :VroomRunNearestTest<CR>
 " Prompt for a command to run
-map <Leader>vp :VimuxPromptCommand<CR>
+map <Leader>rp :VimuxPromptCommand<CR>
 " Run last command executed by VimuxRunCommand
-map <Leader>vl :VimuxRunLastCommand<CR>
+map <Leader>rl :VimuxRunLastCommand<CR>
 " Inspect runner pane
-map <Leader>vi :VimuxInspectRunner<CR>
+map <Leader>ri :VimuxInspectRunner<CR>
 " Close vim tmux runner opened by VimuxRunCommand
-map <Leader>vq :VimuxCloseRunner<CR>
+map <Leader>rq :VimuxCloseRunner<CR>
 " Interrupt any command running in the runner pane
-map <Leader>vx :VimuxInterruptRunner<CR>
+map <Leader>rx :VimuxInterruptRunner<CR>
 " Zoom the runner pane (use <bind-key> z to restore runner pane)
-map <Leader>vz :call VimuxZoomRunner()<CR>
+map <Leader>rz :call VimuxZoomRunner()<CR>
 
 
 
