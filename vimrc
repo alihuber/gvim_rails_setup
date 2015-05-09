@@ -106,6 +106,8 @@ Plugin 'majutsushi/tagbar'
 Plugin 'skalnik/vim-vroom'
 " Python development
 Plugin 'klen/python-mode'
+" Vim/tmux pane navigator
+Plugin 'christoomey/vim-tmux-navigator'
 
 
 " All of your plugins must be added before the following line
