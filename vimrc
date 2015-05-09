@@ -46,8 +46,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'mkitt/tabline.vim'
 " Programming-language/environment specific settings in ./vimsauce/*.vimrc files
 Plugin 'joonty/vim-sauce'
-" Solarized colors
-Plugin 'altercation/vim-colors-solarized'
+" Colorschemes plugin
+Plugin 'flazz/vim-colorschemes'
 " NERDTree plugin
 Plugin 'scrooloose/nerdtree'
 " Buffer explorer
@@ -117,15 +117,6 @@ Plugin 'klen/python-mode'
 " All of your plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-
-" ---- Solarized settings
-set background=dark
-" Set usable colors when vim (not gvim) is started in terminal
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-colorscheme solarized
-let g:solarized_contrast="high" "default value is normal
-let g:solarized_visibility="high"
 
 " ---- NERDTree plugin settings
 map <leader>n :NERDTreeToggle<CR>
