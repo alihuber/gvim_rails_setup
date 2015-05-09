@@ -183,7 +183,7 @@ nnoremap <Esc> :<c-u>call MultiCursorRemoveCursors()<cr>
 let g:multicursor_quit = "<Esc>"
 
 " ---- TagBar settings
-nmap <F8> :TagbarToggle<CR>
+nmap <Leader>tb :TagbarToggle<CR>
 
 " ---- Vroom settings
 " Overwrite standard mappings
