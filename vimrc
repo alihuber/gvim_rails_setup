@@ -68,6 +68,8 @@ Plugin 'sjl/gundo.vim'
 Plugin 'vim-scripts/YankRing.vim'
 " Show function/code block scope hints, toggle with <leader>ig
 Plugin 'nathanaelkane/vim-indent-guides'
+" Clever-f plugin, repeat line search with f, backwards with F
+Plugin 'rhysd/clever-f.vim'
 " Adds surroundings mnemonics ("Hello world") cs"' change surroundings -> 'Hello world'
 Plugin 'tpope/vim-surround'
 " Automatic closing of brackets
