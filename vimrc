@@ -112,7 +112,7 @@ filetype plugin indent on    " required
 
 " ---- Solarized settings
 set background=dark
-" set usable colors when vim (not gvim) is started in terminal
+" Set usable colors when vim (not gvim) is started in terminal
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 colorscheme solarized
@@ -186,8 +186,6 @@ let g:vroom_use_colors = 1
 " *********************************************************************
 " Shorten messages + no welcome screen at startup
 set shortmess=atIoOTts
-" Get out of insert mode without esc
-imap jk <Esc>
 " Encoding
 set enc=utf-8
 " Be able to have hidden buffers
@@ -210,7 +208,7 @@ set tags=tags;/
 " *********************************************************************
 " GUI and movement settings
 " *********************************************************************
-" Set syntax hightlighting on
+" Set syntax highlighting on
 syntax on
 " Show entered commands in lower right corner like multipliers etc.
 set showcmd
@@ -218,11 +216,11 @@ set showcmd
 set showmatch
 " Instead of failing a command because of unsaved changes, instead raise a dialogue asking if you wish to save changed files.
 set confirm
-" Modelines have historically been a source of security vulnerabilities.  As such, it may be a good idea to disable them and use the securemodelines script.
+" Modelines have historically been a source of security vulnerabilities. As such, it may be a good idea to disable them and use the securemodelines script.
 set nomodeline
-" Don't show mode a second time (done by Airline)
+" Don't show mode (already in Airline)
 set noshowmode
-" Hightlight cursor line
+" Highlight cursor line
 set cul
 " Highlight unwanted spaces
 set list!
@@ -247,15 +245,12 @@ set smartcase
 set hlsearch
 " Highlight search results as you type
 set incsearch
-" Set the command window height to 1 lines
+" Set the command window height to 1 line
 set cmdheight=1
 " Always display the status line, even if only one window is displayed
 set laststatus=2
 " Show dots in front of line breaks
 set showbreak=…
-" j and k act on virtual lines (be able to move up into a wrapped line)
-nnoremap j gj
-nnoremap k gk
 
 
 " *********************************************************************
@@ -310,6 +305,11 @@ set copyindent
 " *********************************************************************
 " Global remappings
 " *********************************************************************
+" Get out of insert mode without Esc
+imap jk <Esc>
+" j and k act on virtual lines (be able to move up into a wrapped line)
+nnoremap j gj
+nnoremap k gk
 " Scroll downwards with Ctrl-z instead of Ctrl-y
 nnoremap <C-z> <C-y>
 " Window switching: Ctrl + movement, don't overwrite tab
@@ -330,10 +330,8 @@ map <up> <C-W>-
 map <down> <C-W>+
 map <left> <c-w><
 map <right> <c-w>>
-
 " ctags -  Remap jump back from tag definition to Ctrl-P
 map <C-P> <C-T>
-
 " 12<Enter> jump to line 12, <Enter>=end of file, <Backspace>=beginning of file
 nnoremap <CR> G
 nnoremap <BS> gg
