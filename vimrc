@@ -42,6 +42,8 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" Tablines plugin for terminal vim
+Plugin 'mkitt/tabline.vim'
 " Programming-language/environment specific settings in ./vimsauce/*.vimrc files
 Plugin 'joonty/vim-sauce'
 " Solarized colors
