@@ -48,6 +48,8 @@ Plugin 'mkitt/tabline.vim'
 Plugin 'joonty/vim-sauce'
 " Colorschemes plugin
 Plugin 'flazz/vim-colorschemes'
+" Seti colorscheme plugin
+Plugin 'trusktr/seti.vim'
 " NERDTree plugin
 Plugin 'scrooloose/nerdtree'
 " Buffer explorer
