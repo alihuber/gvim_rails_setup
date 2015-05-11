@@ -188,6 +188,7 @@ let g:vroom_use_colors = 1
 let g:vroom_use_vimux = 1
 
 "---- vimux settings
+let g:VimuxHeight = "40"
 " Run current RSpec file
 map <Leader>rf :VroomRunTestFile<CR>
 " Run nearest RSpec test
