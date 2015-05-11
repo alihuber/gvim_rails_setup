@@ -168,9 +168,9 @@ let g:airline_right_sep                     =''
 let g:airline_symbols.branch                = '⎇'
 
 " ---- UltiSnips settings
-let g:UltiSnipsExpandTrigger="<c-space>"
-let g:UltiSnipsJumpForwardTrigger="<c-space>"
-let g:UltiSnipsJumpBackwardTrigger="<c-s-space>"
+let g:UltiSnipsExpandTrigger="<Tab>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 
 " ---- MultiCursor settings
 nnoremap <leader>d :<c-u>call MultiCursorPlaceCursor()<cr>
@@ -338,7 +338,7 @@ nnoremap j gj
 nnoremap k gk
 " Scroll downwards with Ctrl-z instead of Ctrl-y
 nnoremap <C-z> <C-y>
-" Window switching: Ctrl + movement, don't overwrite tab
+" Window switching: Ctrl + movement
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
