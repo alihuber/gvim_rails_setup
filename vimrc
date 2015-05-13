@@ -206,6 +206,8 @@ map <Leader>rx :VimuxInterruptRunner<CR>
 " Zoom the runner pane (use <bind-key> z to restore runner pane)
 map <Leader>rz :call VimuxZoomRunner()<CR>
 
+"---- Clever-f settings
+let g:clever_f_fix_key_direction = 1
 
 
 " *********************************************************************
