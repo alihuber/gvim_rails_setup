@@ -121,7 +121,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " ---- Colorscheme for terminal vim
-colorscheme seti
+colorscheme jelleybeans
 
 " ---- NERDTree plugin settings
 map <leader>n :NERDTreeToggle<CR>
