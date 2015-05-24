@@ -254,8 +254,9 @@ set cul
 " Highlight unwanted spaces
 set list!
 set list listchars=tab:»-,trail:·,extends:»,precedes:«
-" Set line numbers
+" Set both line numbers and relative line numbers
 set number
+set relativenumber
 " Sets cursor info in lower right corner (line number, column number, %-position in document)
 set ruler
 " Shows 80 chars indicator
