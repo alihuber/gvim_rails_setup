@@ -265,7 +265,7 @@ set colorcolumn=80
 set visualbell
 set noerrorbells
 " Font setting
-set guifont=Monaco:h14
+set guifont=Monaco:h15
 " Prevent cursor from moving to start of line when jumping between lines in buffer
 set nostartofline
 " Use case insensitive search, except when using capital letters
