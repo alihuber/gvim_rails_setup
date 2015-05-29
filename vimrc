@@ -365,7 +365,11 @@ map <C-P> <C-T>
 " 12<Enter> jump to line 12, <Enter>=end of file, <Backspace>=beginning of file
 nnoremap <CR> G
 nnoremap <BS> gg
-
+" Easier tab navigation
+nnoremap th  :tabfirst<CR>
+nnoremap tn  :tabnext<CR>
+nnoremap tp  :tabprev<CR>
+nnoremap tl  :tablast<CR>
 
 " Preserve noeol (missing trailing eol) when saving file. In order
 " to do this we need to temporarily 'set binary' for the duration of
