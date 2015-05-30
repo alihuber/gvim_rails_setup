@@ -42,55 +42,66 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" Tablines plugin for terminal vim
+"***************
+" Editor/Gui plugins
+"***************
+" Better tabs for terminal vim
 Plugin 'mkitt/tabline.vim'
 " Programming-language/environment specific settings in ./vimsauce/*.vimrc files
 Plugin 'joonty/vim-sauce'
-" Colorschemes plugin
 Plugin 'flazz/vim-colorschemes'
-" Seti colorscheme plugin
+" Seti colorscheme
 Plugin 'trusktr/seti.vim'
-" NERDTree plugin
 Plugin 'scrooloose/nerdtree'
-" Buffer explorer
+" Class outline viewer, mapped to <leader>tb
+Plugin 'majutsushi/tagbar'
+" Buffer explorer mapped to <leader>B
 Plugin 'jlanzarotta/bufexplorer'
-" Airline statusline plugin
 Plugin 'bling/vim-airline'
-" Show most recent used files
+" Show most recent used files, mapped to <leader>Enter
 Plugin 'vim-scripts/mru.vim'
 " Needed for vim-session plugin
 Plugin 'xolox/vim-misc'
-" Session-Management: Open/SaveSession foo
 Plugin 'xolox/vim-session'
-" <leader>t fuzzy file search
 Plugin 'wincent/command-t'
-" Expands visual selection to next text object by repeating v
-Plugin 'terryma/vim-expand-region'
-" Undo tree, file changes over time
+" Undo tree, mapped to <leader>u
 Plugin 'sjl/gundo.vim'
-" Explore clipboard contents
+" Explore clipboard contents, mapped to <leader>y
 Plugin 'vim-scripts/YankRing.vim'
 " Show function/code block scope hints, toggle with <leader>ig
 Plugin 'nathanaelkane/vim-indent-guides'
-" Clever-f plugin, repeat line search with f, backwards with F
+" Repeat line search with f, backwards with F
 Plugin 'rhysd/clever-f.vim'
-" Adds surroundings mnemonics ("Hello world") cs"' change surroundings -> 'Hello world'
+" Place cursor: <leader><d>, start editing: <leader><e>, finish with <Esc>
+Plugin 'paradigm/vim-multicursor'
+Plugin 'SirVer/ultisnips'
+" Snippets are separated from the UltiSnips engine.
+Plugin 'honza/vim-snippets'
+
+"********************
+" Plugins for editing
+"********************
+Plugin 'tpope/vim-repeat'
+Plugin 'vim-scripts/visualrepeat'
+" Expands visual selection to next text object by repeating v
+Plugin 'terryma/vim-expand-region'
+" Adds surroundings mnemonics ("Hello") cs"' change surroundings -> 'Hello'
 Plugin 'tpope/vim-surround'
 " Automatic closing of brackets
 Plugin 'Raimondi/delimitMate'
-" Commenting of lines/paragraphs with movement/text objects/counts, mapped to \\\ and gcc (gcap)
+" Commenting is mapped to \\\ and gcc (gcap)
 Plugin 'tpope/vim-commentary'
-" Vim-Ruby plugin, adds shift-enter for blocks/methods, ]m next method, cim (change in method), vim (visual in method) etc.
-Plugin 'vim-ruby/vim-ruby'
-" Automatic 'end' insertion for Ruby development
 Plugin 'tpope/vim-endwise'
-" % matching for do ... end, if ... elsif .. end, RSpec's describe "" do ... end etc.
 Plugin 'tmhedberg/matchit'
-" CoffeeScript plugin
-Plugin 'kchmck/vim-coffee-script'
-" Slim template plugin
-Plugin 'slim-template/vim-slim'
-" Fugitive Git plugin for displaying git branch in Airline status bar
+" EasyAlign plugin: mapped to a (visual mode) and ga (normal mode)
+Plugin 'junegunn/vim-easy-align'
+" Switch statements from single-line to multiline, mapped to sj and sk
+Plugin 'AndrewRadev/splitjoin.vim'
+
+"***************
+" Git plugins
+"***************
+" Git plugin (for displaying git branch in Airline status bar)
 Plugin 'tpope/vim-fugitive'
 " Git 'gutter' line changes indicators on the left, also used by Airline.
 " Next/previous changed line: ]c/[c
@@ -98,30 +109,27 @@ Plugin 'tpope/vim-fugitive'
 " Revert stage:      <leader>hr
 " Diff line changes: <leader>hp
 Plugin 'airblade/vim-gitgutter'
-" UltiSnips Plugin
-Plugin 'SirVer/ultisnips'
-" Snippets are separated from the UltiSnips engine.
-Plugin 'honza/vim-snippets'
-" MultiCursor Plugin <leader><d> place, <leader><e> edit, *no* <enter> needed
-Plugin 'paradigm/vim-multicursor'
-" TagBar Plugin
-Plugin 'majutsushi/tagbar'
+
+"**********************
+" Programming languages
+"**********************
+" Adds shift-enter for blocks/methods, ]m next method, cim (change in method), vim (visual in method) etc.
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'slim-template/vim-slim'
 " Run RSpec tests out of vim
 Plugin 'skalnik/vim-vroom'
-" Vimux plugin for controlling tmux out of vim
+" Controlling tmux out of vim
 Plugin 'benmills/vimux'
-" Vim/tmux pane navigator
 Plugin 'christoomey/vim-tmux-navigator'
-" Python development
 Plugin 'klen/python-mode'
-
+Plugin 'gabrielelana/vim-markdown'
+Plugin 'avakhov/vim-yaml'
+Plugin 'mustache/vim-mustache-handlebars'
 
 " All of your plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-
-" ---- Colorscheme for terminal vim
-colorscheme jelleybeans
 
 " ---- NERDTree plugin settings
 map <leader>n :NERDTreeToggle<CR>
@@ -134,27 +142,27 @@ let g:session_autoload = 'no'
 " ---- Command-T plugin settings: max indexed files
 let g:CommandTMaxFiles=50000
 
-" ---- Toggle Gundo tree
+" ---- Gundo plugin settings
 map <leader>u :GundoToggle<cr>
 
-" ---- Toggle YankRing
+" ---- YankRing plugin settings
 nmap <leader>y :YRShow<cr>
 
-" ---- Toggle BufExplorer
+" ---- BufExplorer plugin settings
 nmap <leader>B :BufExplorer<cr>
 
-" ---- Toggle most recent files
+" ---- MRU (most recent used files) plugin settings
 map <leader><enter> :Mru<cr>
 
-" ---- Vim-Expand-Region mappings
+" ---- Vim-Expand-Region plugin settings
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-" ---- Indent-Guides settings
+" ---- Indent-Guides plugin settings
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size  = 1
 
-" ---- Airline status bar settings
+" ---- Airline status bar plugin settings
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
@@ -167,27 +175,27 @@ let g:airline_left_sep                      =''
 let g:airline_right_sep                     =''
 let g:airline_symbols.branch                = '⎇'
 
-" ---- UltiSnips settings
+" ---- UltiSnips plugin settings
 let g:UltiSnipsExpandTrigger="<Tab>"
 let g:UltiSnipsJumpForwardTrigger="<Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 
-" ---- MultiCursor settings
+" ---- MultiCursor plugin settings
 nnoremap <leader>d :<c-u>call MultiCursorPlaceCursor()<cr>
 nnoremap <leader>e :<c-u>call MultiCursorManual()<cr>
 nnoremap <Esc> :<c-u>call MultiCursorRemoveCursors()<cr>
 let g:multicursor_quit = "<Esc>"
 
-" ---- TagBar settings
+" ---- TagBar plugin settings
 nmap <Leader>tb :TagbarToggle<CR>
 
-" ---- Vroom settings
+" ---- Vroom plugin settings
 " Overwrite standard mappings
-let g:vroom_map_keys = 0
+let g:vroom_map_keys   = 0
 let g:vroom_use_colors = 1
-let g:vroom_use_vimux = 1
+let g:vroom_use_vimux  = 1
 
-"---- vimux settings
+"---- Vimux plugin settings
 let g:VimuxHeight = "40"
 " Run current RSpec file
 map <Leader>rf :VroomRunTestFile<CR>
@@ -206,13 +214,33 @@ map <Leader>rx :VimuxInterruptRunner<CR>
 " Zoom the runner pane (use <bind-key> z to restore runner pane)
 map <Leader>rz :call VimuxZoomRunner()<CR>
 
-"---- Clever-f settings
+"---- Clever-f plugin settings
 let g:clever_f_fix_key_direction = 1
 
+"---- EasyAlign plugin settings
+" Start interactive EasyAlign in visual mode (e.g. vip<a>)
+vmap a <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+"---- Vim-Markdown plugin settings
+let g:markdown_enable_spell_checking = 0
+
+"---- Vim-Mustache-Handlebars plugin settings
+let g:mustache_abbreviations = 1
+
+"---- SplitJoin plugin settings
+nmap sj :SplitjoinSplit<cr>
+nmap sk :SplitjoinJoin<cr>
 
 " *********************************************************************
 " Basic editor configuration
 " *********************************************************************
+" Set tab width
+set tabstop=2
+" Spaces as tabs
+set softtabstop=2
+set shiftwidth=2
 " Shorten messages + no welcome screen at startup
 set shortmess=atIoOTts
 " Encoding
@@ -237,6 +265,8 @@ set tags=tags;/
 " *********************************************************************
 " GUI and movement settings
 " *********************************************************************
+" Colorscheme for terminal vim
+colorscheme jelleybeans
 " Set syntax highlighting on
 syntax on
 " Show entered commands in lower right corner like multipliers etc.
