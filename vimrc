@@ -190,10 +190,12 @@ let g:multicursor_quit = "<Esc>"
 nmap <Leader>tb :TagbarToggle<CR>
 
 " ---- Vroom plugin settings
+let g:vroom_spec_command = "rspec --format progress"
 " Overwrite standard mappings
-let g:vroom_map_keys   = 0
-let g:vroom_use_colors = 1
-let g:vroom_use_vimux  = 1
+let g:vroom_map_keys        = 0
+let g:vroom_use_colors      = 1
+let g:vroom_use_binstubs    = 1
+let g:vroom_use_vimux       = 1
 
 "---- Vimux plugin settings
 let g:VimuxHeight = "40"
