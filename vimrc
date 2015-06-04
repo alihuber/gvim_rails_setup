@@ -455,3 +455,14 @@ function! s:TempRestoreBinaryForNoeol()
     call winrestview(s:save_view)
   endif
 endfunction
+
+" Delete hidden buffers
+function! DeleteHiddenBuffers()
+    let tpbl=[]
+    call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
+    for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
+        silent execute 'bwipeout' buf
+    endfor
+endfunction
+
+command DeleteHiddenBuffers execute "call DeleteHiddenBuffers()"
