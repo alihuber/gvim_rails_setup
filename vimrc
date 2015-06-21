@@ -64,6 +64,7 @@ Plugin 'vim-scripts/mru.vim'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
 Plugin 'wincent/command-t'
+Plugin 'rking/ag.vim'
 " Undo tree, mapped to <leader>u
 Plugin 'sjl/gundo.vim'
 " Explore clipboard contents, mapped to <leader>y
