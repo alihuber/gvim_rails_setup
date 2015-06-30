@@ -69,8 +69,6 @@ Plugin 'rking/ag.vim'
 Plugin 'sjl/gundo.vim'
 " Explore clipboard contents, mapped to <leader>y
 Plugin 'vim-scripts/YankRing.vim'
-" Show function/code block scope hints, toggle with <leader>ig
-Plugin 'nathanaelkane/vim-indent-guides'
 " Repeat line search with f, backwards with F
 Plugin 'rhysd/clever-f.vim'
 " Place cursor: <leader><d>, start editing: <leader><e>, finish with <Esc>
@@ -158,10 +156,6 @@ map <leader><enter> :Mru<cr>
 " ---- Vim-Expand-Region plugin settings
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
-
-" ---- Indent-Guides plugin settings
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size  = 1
 
 " ---- Airline status bar plugin settings
 if !exists('g:airline_symbols')
