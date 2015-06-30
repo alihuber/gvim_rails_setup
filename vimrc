@@ -50,8 +50,9 @@ Plugin 'mkitt/tabline.vim'
 " Programming-language/environment specific settings in ./vimsauce/*.vimrc files
 Plugin 'joonty/vim-sauce'
 Plugin 'flazz/vim-colorschemes'
-" Seti colorscheme
+" Other colorschemes
 Plugin 'trusktr/seti.vim'
+Plugin 'queyenth/oxeded.vim'
 Plugin 'scrooloose/nerdtree'
 " Class outline viewer, mapped to <leader>tb
 Plugin 'majutsushi/tagbar'
