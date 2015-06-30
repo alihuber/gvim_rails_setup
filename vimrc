@@ -257,6 +257,8 @@ set nobackup
 set noswapfile
 " Standard name of ctags file, normally in project root
 set tags=tags;/
+" Associate ECMAScript6 files with JavaScript file type
+autocmd BufRead,BufNewFile *.es6 setfiletype javascript
 
 
 " *********************************************************************
