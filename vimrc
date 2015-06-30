@@ -468,4 +468,4 @@ function! DeleteHiddenBuffers()
     endfor
 endfunction
 
-command DeleteHiddenBuffers execute "call DeleteHiddenBuffers()"
+command! DeleteHiddenBuffers execute "call DeleteHiddenBuffers()"
