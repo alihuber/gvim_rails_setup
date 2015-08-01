@@ -82,6 +82,7 @@ Plugin 'honza/vim-snippets'
 " Plugins for editing
 "********************
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-scripts/visualrepeat'
 " Expands visual selection to next text object by repeating v
 Plugin 'terryma/vim-expand-region'
