@@ -311,6 +311,8 @@ set cmdheight=1
 set laststatus=2
 " Show dots in front of line breaks
 set showbreak=…
+" Show diffs in vertical buffers
+set diffopt=vertical
 
 
 " *********************************************************************
@@ -466,3 +468,6 @@ function! DeleteHiddenBuffers()
 endfunction
 
 command! DeleteHiddenBuffers execute "call DeleteHiddenBuffers()"
+
+" Automatically clean fugitive buffers
+autocmd BufReadPost fugitive://* set bufhidden=delete
