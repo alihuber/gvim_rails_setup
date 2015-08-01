@@ -310,6 +310,8 @@ set incsearch
 set cmdheight=1
 " Always display the status line, even if only one window is displayed
 set laststatus=2
+" Do word wrapping
+set linebreak
 " Show dots in front of line breaks
 set showbreak=…
 " Show diffs in vertical buffers
