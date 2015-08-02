@@ -128,6 +128,7 @@ Plugin 'klen/python-mode'
 Plugin 'gabrielelana/vim-markdown'
 Plugin 'avakhov/vim-yaml'
 Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'scrooloose/syntastic'
 
 " All of your plugins must be added before the following line
 call vundle#end()            " required
@@ -164,10 +165,11 @@ vmap <C-v> <Plug>(expand_region_shrink)
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-let g:airline_extensions                    = ['branch', 'hunks']
+let g:airline_extensions                    = ['branch', 'hunks', 'syntastic']
 let g:airline#extensions#branch#enabled     = 1
 let g:airline#extensions#hunks#enabled      = 1
 let g:airline#extensions#hunks#hunk_symbols = ['+', '~', '-']
+let g:airline#extensions#syntastic#enabled  = 1
 let g:airline_theme                         ='powerlineish'
 let g:airline_left_sep                      =''
 let g:airline_right_sep                     =''
@@ -233,6 +235,10 @@ let g:mustache_abbreviations = 1
 nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
 
+"---- Syntastic plugin settings
+let g:syntastic_error_symbol = "✗"
+
+
 " *********************************************************************
 " Basic editor configuration
 " *********************************************************************
@@ -262,7 +268,6 @@ set noswapfile
 set tags=tags;/
 " Associate ECMAScript6 files with JavaScript file type
 autocmd BufRead,BufNewFile *.es6 setfiletype javascript
-
 
 " *********************************************************************
 " GUI and movement settings
