@@ -66,6 +66,7 @@ Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
 Plugin 'wincent/command-t'
 Plugin 'rking/ag.vim'
+Plugin 'nelstrom/vim-visual-star-search'
 " Undo tree, mapped to <leader>u
 Plugin 'sjl/gundo.vim'
 " Explore clipboard contents, mapped to <leader>y
