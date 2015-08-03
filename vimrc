@@ -117,6 +117,10 @@ Plugin 'airblade/vim-gitgutter'
 "**********************
 " Adds shift-enter for blocks/methods, ]m next method, cim (change in method), vim (visual in method) etc.
 Plugin 'vim-ruby/vim-ruby'
+" Needed for vim-textobj-rubyblock
+Plugin 'kana/vim-textobj-user'
+" Adds e.g. vir for selecting block contents
+Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'slim-template/vim-slim'
 " Run RSpec tests out of vim
