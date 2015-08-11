@@ -242,6 +242,8 @@ nmap sk :SplitjoinJoin<cr>
 "---- Syntastic plugin settings
 let g:syntastic_error_symbol = "✗"
 
+"--- Gitgutter plugin settings
+let g:gitgutter_max_signs=1000
 
 " *********************************************************************
 " Basic editor configuration
