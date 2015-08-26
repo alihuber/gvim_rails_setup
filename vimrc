@@ -241,6 +241,8 @@ nmap sk :SplitjoinJoin<cr>
 
 "---- Syntastic plugin settings
 let g:syntastic_error_symbol = "✗"
+" Disable slow slim linter
+let g:syntastic_mode_map = { 'passive_filetypes': ['slim'] }
 
 "--- Gitgutter plugin settings
 let g:gitgutter_max_signs=1000
