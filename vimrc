@@ -90,7 +90,7 @@ Plugin 'terryma/vim-expand-region'
 " Adds surroundings mnemonics ("Hello") cs"' change surroundings -> 'Hello'
 Plugin 'tpope/vim-surround'
 " Automatic closing of brackets
-Plugin 'Raimondi/delimitMate'
+Plugin 'jiangmiao/auto-pairs'
 " Commenting is mapped to \\\ and gcc (gcap)
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-endwise'
