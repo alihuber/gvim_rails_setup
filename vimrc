@@ -131,7 +131,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'klen/python-mode'
 Plugin 'gabrielelana/vim-markdown'
 Plugin 'avakhov/vim-yaml'
-Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'Slava/vim-spacebars'
 Plugin 'scrooloose/syntastic'
 
 " All of your plugins must be added before the following line
