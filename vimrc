@@ -419,8 +419,10 @@ nnoremap th  :tabfirst<CR>
 nnoremap tn  :tabnext<CR>
 nnoremap tp  :tabprev<CR>
 nnoremap tl  :tablast<CR>
-" visual mode dot command tweak
+" Visual mode dot command tweak
 vnoremap . :norm.<CR>
+" Copy file path
+nnor <leader>cp :let @*=expand("%:p")<CR>
 
 " Preserve noeol (missing trailing eol) when saving file. In order
 " to do this we need to temporarily 'set binary' for the duration of
