@@ -54,6 +54,8 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'trusktr/seti.vim'
 Plugin 'queyenth/oxeded.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 " Class outline viewer, mapped to <leader>tb
 Plugin 'majutsushi/tagbar'
 " Buffer explorer mapped to <leader>B
@@ -139,8 +141,10 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " ---- NERDTree plugin settings
-map <leader>n :NERDTreeToggle<CR>
+map <leader>n :NERDTreeTabsToggle<CR>
+map <leader>nf :NERDTreeTabsFind<CR>
 let NERDTreeShowHidden=1
+let nerdtree_tabs_autofind=1
 
 " ---- Vim-Session plugin settings
 let g:session_autosave = 'no'
