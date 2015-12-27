@@ -290,6 +290,8 @@ imap jk <Esc>
 :nnoremap <A-j> <C-w>j
 :nnoremap <A-k> <C-w>k
 :nnoremap <A-l> <C-w>l
+" Source bash_profile in embedded terminal
+nnoremap <leader>z :new<CR>:terminal<CR>source $HOME/.bash_profile<CR>c<CR>
 " j and k act on virtual lines (be able to move up into a wrapped line)
 nnoremap j gj
 nnoremap k gk
