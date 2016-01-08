@@ -334,7 +334,8 @@ set linebreak
 set showbreak=…
 " Show diffs in vertical buffers
 set diffopt=vertical
-
+" No scroll bar
+set guioptions-=r
 
 " *********************************************************************
 " Omnicompletion (Ctrl-p) settings
