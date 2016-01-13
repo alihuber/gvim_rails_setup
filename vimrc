@@ -248,6 +248,10 @@ let g:syntastic_error_symbol = "✗"
 " Disable slow linters
 let g:syntastic_mode_map = { 'passive_filetypes': ['slim', 'scss'] }
 
+"---- visSum plugin settings
+nmap <silent> <unique> <Leader>m <Plug>SumNum
+vmap <silent> <unique> <Leader>m <Plug>SumNum
+
 "--- Gitgutter plugin settings
 let g:gitgutter_max_signs=1000
 
