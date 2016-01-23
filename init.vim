@@ -349,3 +349,8 @@ set omnifunc=syntaxcomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+
+" unset YouCompleteMe entry switching with <tab>,
+" interferes with UltiSnips
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
