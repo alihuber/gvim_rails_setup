@@ -109,6 +109,7 @@ NeoBundle 'gabrielelana/vim-markdown'
 NeoBundle 'avakhov/vim-yaml'
 NeoBundle 'Slava/vim-spacebars'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'thoughtbot/vim-rspec'
 
 call neobundle#end()
 
@@ -206,6 +207,12 @@ vmap <silent> <unique> <Leader>m <Plug>SumNum
 
 "--- Gitgutter plugin settings
 let g:gitgutter_max_signs=1000
+
+"--- RSpec.vim mappings		
+map <Leader>rr :call RunCurrentSpecFile()<CR>		
+map <Leader>rn :call RunNearestSpec()<CR>		
+map <Leader>rl :call RunLastSpec()<CR>		
+map <Leader>ra :call RunAllSpecs()<CR>
 
 " *********************************************************************
 " Basic editor configuration
