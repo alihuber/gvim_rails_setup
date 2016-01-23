@@ -14,4 +14,4 @@ Compile command-t plugin:
     ruby extconf.rb
     make
 
-Don't forget to copy `IndexedSearch.vim` into the `plugin`-directory!
+Don't forget to copy the files in the `plugin`-directory!
