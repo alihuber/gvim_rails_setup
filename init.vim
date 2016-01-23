@@ -243,6 +243,7 @@ set cmdheight=1
 set linebreak
 set showbreak=…
 set diffopt=vertical
+set guioptions-=r
 
 
 " *********************************************************************
