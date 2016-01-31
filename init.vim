@@ -158,7 +158,6 @@ let g:airline#extensions#branch#enabled     = 1
 let g:airline#extensions#hunks#enabled      = 1
 let g:airline#extensions#hunks#hunk_symbols = ['+', '~', '-']
 let g:airline#extensions#syntastic#enabled  = 1
-let g:airline_theme                         ='powerlineish'
 let g:airline_left_sep                      =''
 let g:airline_right_sep                     =''
 let g:airline_symbols.branch                = '⎇'
