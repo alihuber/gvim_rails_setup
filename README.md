@@ -22,7 +22,7 @@ Decide which Python env to use, then `pip2 install neovim` or `pip3 install neov
 Then in `init.vim` comment out every plugin except the part that sets up NeoBundle. Then comment the plugins in again, all plugins will be installed.
 
 ### YouCompleteMe setup
-After plugin installation:
+After plugin installation:  
 `cd ~/.config/nvim/bundle/YouCompleteMe`  
 `./install.py --tern-completer`
 
