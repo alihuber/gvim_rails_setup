@@ -119,9 +119,14 @@ filetype plugin indent on
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 
-" ---- YouCompleteMe settings
+" ---- CtrlP settings
 let g:ctrlp_map = '<leader>t'
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40
+
+" ---- YouCompleteMe settings
 let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_seed_identifiers_with_syntax = 1
 
 " ---- NERDTree plugin settings
 map <leader>n :NERDTreeTabsToggle<CR>
