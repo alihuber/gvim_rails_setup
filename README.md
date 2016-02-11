@@ -24,7 +24,8 @@ Then in `init.vim` comment out every plugin except the part that sets up NeoBund
 ### YouCompleteMe setup
 After plugin installation:  
 `cd ~/.config/nvim/bundle/YouCompleteMe`  
-`./install.py --tern-completer`
+`./install.py --tern-completer`  
+For better omnicompletion re-generate ctags: `ctags -R --fields=+l *`
 
 
 ## After either setup:
