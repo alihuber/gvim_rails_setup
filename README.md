@@ -16,10 +16,12 @@ then in `.vimrc` comment out every plugin except the part that sets up vundle. T
     make
 
 ## neovim setup
-Decide which Python env to use, then `pip2 install neovim` or `pip3 install neovim`, then edit  
+`cd .config && mkdir nvim && cd nvim && mkdir bundle && cd bundle`  
+`git clone https://github.com/Shougo/neobundle.vim && cd..`  
+`wget https://raw.githubusercontent.com/alihuber/gvim_rails_setup/master/init.vim`  
+Decide which Python env to use, then `pip2 install neovim` or `pip3 install neovim`, then edit the  
 `let g:python3_host_prog = '/usr/local/bin/python3'` - line in `init.vim`.  
-
-Then in `init.vim` comment out every plugin except the part that sets up NeoBundle. Then comment the plugins in again, all plugins will be installed.
+Start `nvim`, all plugins will be installed
 
 ### YouCompleteMe setup
 After plugin installation:  
@@ -29,4 +31,7 @@ For better omnicompletion re-generate ctags: `ctags -R --fields=+l *`
 
 
 ## After either setup:
-Don't forget to copy the files in the `plugin`-directory (`IndexedSearch.vim` & `visSum.vim`)!
+Don't forget to copy the files in the `plugin`-directory:  
+`cd .config/nvim && mkdir plugin && cd plugin`    
+`wget https://raw.githubusercontent.com/alihuber/gvim_rails_setup/master/plugin/IndexedSearch.vim`  
+`wget https://raw.githubusercontent.com/alihuber/gvim_rails_setup/master/plugin/visSum.vim`
