@@ -257,7 +257,8 @@ set nostartofline
 set ignorecase
 set smartcase
 set cmdheight=1
-set linebreak
+" strange linebreak behaviour in nvim?
+" set linebreak
 set showbreak=…
 set diffopt=vertical
 set guioptions-=r
