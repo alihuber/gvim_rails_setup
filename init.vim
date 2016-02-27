@@ -25,11 +25,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "***************
 " Better tabs for terminal vim
 NeoBundle 'mkitt/tabline.vim'
-" Programming-language/environment specific settings in ./vimsauce/*.vimrc files
-NeoBundle 'flazz/vim-colorschemes'
-" Other colorschemes
-NeoBundle 'trusktr/seti.vim'
-NeoBundle 'queyenth/oxeded.vim'
 " NERDtree
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'jistr/vim-nerdtree-tabs'
@@ -236,7 +231,8 @@ set noswapfile
 " *********************************************************************
 " GUI and movement settings
 " *********************************************************************
-colorscheme jelleybeans
+colorscheme mushroom
+set background=dark
 syntax on
 set showcmd
 set showmatch

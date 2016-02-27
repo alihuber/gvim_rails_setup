@@ -49,10 +49,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'mkitt/tabline.vim'
 " Programming-language/environment specific settings in ./vimsauce/*.vimrc files
 Plugin 'joonty/vim-sauce'
-Plugin 'flazz/vim-colorschemes'
-" Other colorschemes
-Plugin 'trusktr/seti.vim'
-Plugin 'queyenth/oxeded.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -287,8 +283,8 @@ autocmd BufRead,BufNewFile *.es6 setfiletype javascript
 " *********************************************************************
 " GUI and movement settings
 " *********************************************************************
-" Colorscheme for terminal vim
-colorscheme jelleybeans
+colorscheme mushroom
+set background=dark
 " Set syntax highlighting on
 syntax on
 " Show entered commands in lower right corner like multipliers etc.
