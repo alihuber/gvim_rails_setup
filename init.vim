@@ -1,14 +1,27 @@
-" ***************************
-" Python Interpreter settings
-" ***************************
-let g:python3_host_prog = '/usr/local/bin/python3'
+" *********************************************************************
+" Reminders
+" *********************************************************************
+" nmap     = map a key sequence when in normal mode
+" <silent> = don't show a message when key sequence is used
+" Keycodes
+" http://vimdoc.sourceforge.net/htmldoc/intro.html#key-notation
+" Omnicomplete
+" <c-x><c-o> Language-wise omnicompletion
+" <c-p> Tagfile/Buffer-wise omnicompletion
 
-" Change the mapleader from \ to ,
-" leader has to be set on top of file to be used later on
-let mapleader=","
 
 " *********************************************************************
-" Plugins
+" Python Interpreter settings
+" *********************************************************************
+let g:python_host_prog = '/usr/bin/python'
+
+
+" Change the mapleader from \ to ,
+let mapleader=","
+
+
+" *********************************************************************
+" Plugins setup
 " *********************************************************************
 if 0 | endif
 if has('vim_starting')
@@ -20,12 +33,13 @@ call neobundle#begin(expand('~/.config/nvim/bundle/'))
 " Let NeoBundle manage NeoBundle, required
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-"***************
+
+" *********************************************************************
 " Editor/Gui plugins
-"***************
+" *********************************************************************
 " Better tabs for terminal vim
 NeoBundle 'mkitt/tabline.vim'
-" NERDtree
+" NERDtree and plugins
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'jistr/vim-nerdtree-tabs'
 NeoBundle 'Xuyuanp/nerdtree-git-plugin'
@@ -33,14 +47,18 @@ NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 NeoBundle 'majutsushi/tagbar'
 " Buffer explorer mapped to <leader>B
 NeoBundle 'jlanzarotta/bufexplorer'
+" Airline statusline plugin
 NeoBundle 'bling/vim-airline'
 " Show most recent used files, mapped to <leader>Enter
 NeoBundle 'vim-scripts/mru.vim'
+" Ctrlp fuzzy file finder plugin
 NeoBundle 'ctrlpvim/ctrlp.vim'
 " Needed for vim-session plugin
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-session'
+" Code completion
 NeoBundle 'Valloric/YouCompleteMe'
+" Searches from visual selections
 NeoBundle 'nelstrom/vim-visual-star-search'
 " Undo tree, mapped to <leader>u
 NeoBundle 'sjl/gundo.vim'
@@ -48,15 +66,17 @@ NeoBundle 'sjl/gundo.vim'
 NeoBundle 'vim-scripts/YankRing.vim'
 " Repeat line search with f, backwards with F
 NeoBundle 'rhysd/clever-f.vim'
-" Place cursor: <leader><d>, start editing: <leader><e>, finish with <Esc>
+" Multiple cursors. Place cursor: <leader><d>, start editing: <leader><e>, finish with <Esc>
 NeoBundle 'paradigm/vim-multicursor'
+" Code snippets
 NeoBundle 'SirVer/ultisnips'
 " Snippets are separated from the UltiSnips engine.
 NeoBundle 'honza/vim-snippets'
 
-"********************
+
+" *********************************************************************
 " Plugins for editing
-"********************
+" *********************************************************************
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'vim-scripts/visualrepeat'
@@ -74,12 +94,13 @@ NeoBundle 'tmhedberg/matchit'
 NeoBundle 'junegunn/vim-easy-align'
 " Switch statements from single-line to multiline, mapped to sj and sk
 NeoBundle 'AndrewRadev/splitjoin.vim'
-" Indent Guides Plugin, trigger with <leader>ig		
+" Indent Guides Plugin, trigger with <leader>ig
 NeoBundle 'nathanaelkane/vim-indent-guides'
 
-"***************
+
+" *********************************************************************
 " Git plugins
-"***************
+" *********************************************************************
 " Git plugin (for displaying git branch in Airline status bar)
 NeoBundle 'tpope/vim-fugitive'
 " Git 'gutter' line changes indicators on the left, also used by Airline.
@@ -89,9 +110,10 @@ NeoBundle 'tpope/vim-fugitive'
 " Diff line changes: <leader>hp
 NeoBundle 'airblade/vim-gitgutter'
 
-"**********************
-" Programming languages
-"**********************
+
+" *********************************************************************
+" Ruby Stuff
+" *********************************************************************
 " Adds shift-enter for blocks/methods, ]m next method, cim (change in method), vim (visual in method) etc.
 NeoBundle 'vim-ruby/vim-ruby'
 " Needed for vim-textobj-rubyblock
@@ -102,9 +124,18 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'gabrielelana/vim-markdown'
 NeoBundle 'avakhov/vim-yaml'
-NeoBundle 'Slava/vim-spacebars'
-NeoBundle 'scrooloose/syntastic'
 NeoBundle 'thoughtbot/vim-rspec'
+
+
+" *********************************************************************
+" Programming languages
+" *********************************************************************
+" Support for mustache/handlebars templates
+NeoBundle 'Slava/vim-spacebars'
+" General syntax highlighting
+NeoBundle 'scrooloose/syntastic'
+" Tern completer for JavaScript
+NeoBundle 'ternjs/tern_for_vim'
 
 call neobundle#end()
 
@@ -114,10 +145,11 @@ filetype plugin indent on
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 
+
 " ---- CtrlP settings
 let g:ctrlp_map = '<leader>t'
-let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=40
+let g:ctrlp_max_files = 0
+let g:ctrlp_max_depth = 40
 
 " ---- YouCompleteMe settings
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -200,26 +232,35 @@ let g:syntastic_error_symbol = "✗"
 " Disable slow linters
 let g:syntastic_mode_map = { 'passive_filetypes': ['slim', 'scss'] }
 
-"---- visSum plugin settings		
-nmap <silent> <unique> <Leader>m <Plug>SumNum		
-vmap <silent> <unique> <Leader>m <Plug>SumNum		
+"---- visSum plugin settings
+nmap <silent> <unique> <Leader>m <Plug>SumNum
+vmap <silent> <unique> <Leader>m <Plug>SumNum
 
 "--- Gitgutter plugin settings
 let g:gitgutter_max_signs=1000
 
-"--- RSpec.vim mappings		
-map <Leader>rr :call RunCurrentSpecFile()<CR>		
-map <Leader>rn :call RunNearestSpec()<CR>		
-map <Leader>rl :call RunLastSpec()<CR>		
+"--- RSpec.vim mappings
+map <Leader>rr :call RunCurrentSpecFile()<CR>
+map <Leader>rn :call RunNearestSpec()<CR>
+map <Leader>rl :call RunLastSpec()<CR>
 map <Leader>ra :call RunAllSpecs()<CR>
+
+"--- tern plugin settings
+let g:tern_map_keys=1
+let g:tern_show_argument_hints='on_hold'
+
 
 " *********************************************************************
 " Basic editor configuration
 " *********************************************************************
+" Set tab width
 set tabstop=2
+" Spaces as tabs
 set softtabstop=2
 set shiftwidth=2
+" Shorten messages + no welcome screen at startup
 set shortmess=atIoOTts
+" Be able to have hidden buffers
 set hidden
 set shell=/bin/bash
 set wildignore+=*.pyc,*.zip,*.gz,*.bz,*.tar,*.jpg,*.png,*.gif,*.avi,*.wmv,*.ogg,*.mp3,*.mov,*.git*,*.swp,*.bak,*.class
@@ -233,30 +274,49 @@ set noswapfile
 " *********************************************************************
 colorscheme mushroom
 set background=dark
+" Set syntax highlighting on
 syntax on
+" Show entered commands in lower right corner like multipliers etc.
 set showcmd
+" Blink on matching parenthesis
 set showmatch
+" Instead of failing a command because of unsaved changes, instead raise a dialogue asking if you wish to save changed files.
 set confirm
+" Modelines have historically been a source of security vulnerabilities. As such, it may be a good idea to disable them and use the securemodelines script.
 set nomodeline
+" Don't show mode (already in Airline)
 set noshowmode
+" Highlight cursor line
 set cul
+" Highlight unwanted spaces
 set list!
 set list listchars=tab:»-,trail:·,extends:»,precedes:«
+" Set both line numbers and relative line numbers
 set number
 set relativenumber
+" Sets cursor info in lower right corner (line number, column number, %-position in document)
 set ruler
+" Shows 80 chars indicator
 set colorcolumn=80
+" Don't beep
 set visualbell
 set noerrorbells
-set guifont=Monaco:h15
+" Font setting
+set guifont=Inconsolata:h19
+" Prevent cursor from moving to start of line when jumping between lines in buffer
 set nostartofline
+" Use case insensitive search, except when using capital letters
 set ignorecase
 set smartcase
+" Set the command window height to 1 line
 set cmdheight=1
-" strange linebreak behaviour in nvim?
-" set linebreak
+" Do word wrapping
+set linebreak
+" Show dots in front of line breaks
 set showbreak=…
+" Show diffs in vertical buffers
 set diffopt=vertical
+" No scroll bar
 set guioptions-=r
 
 
@@ -277,9 +337,9 @@ highlight Pmenu ctermbg=238 gui=bold
 set completeopt=longest,menuone
 
 
-" **************************************
+" *********************************************************************
 " Global tab/spaces/indentation settings
-" **************************************
+" *********************************************************************
 " Insert space characters whenever the tab key is pressed
 set expandtab
 " When at 3 spaces, and I hit tab go to 4 not 5
@@ -365,7 +425,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
-" unset YouCompleteMe entry switching with <tab>,
+" Unset YouCompleteMe entry switching with <tab>,
 " interferes with UltiSnips
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
