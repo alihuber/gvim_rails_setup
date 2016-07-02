@@ -139,8 +139,6 @@ NeoBundle 'ternjs/tern_for_vim'
 
 call neobundle#end()
 
-filetype plugin indent on
-
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 NeoBundleCheck
@@ -274,8 +272,6 @@ set noswapfile
 " *********************************************************************
 colorscheme mushroom
 set background=dark
-" Set syntax highlighting on
-syntax on
 " Show entered commands in lower right corner like multipliers etc.
 set showcmd
 " Blink on matching parenthesis
