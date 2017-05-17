@@ -72,6 +72,8 @@ NeoBundle 'paradigm/vim-multicursor'
 NeoBundle 'SirVer/ultisnips'
 " Snippets are separated from the UltiSnips engine.
 NeoBundle 'honza/vim-snippets'
+" Syntax checking plugin
+NeoBundle 'scrooloose/syntastic'
 
 
 " *********************************************************************
@@ -112,30 +114,32 @@ NeoBundle 'airblade/vim-gitgutter'
 
 
 " *********************************************************************
-" Ruby Stuff
+" Other programming languages stuff
 " *********************************************************************
-" Adds shift-enter for blocks/methods, ]m next method, cim (change in method), vim (visual in method) etc.
-NeoBundle 'vim-ruby/vim-ruby'
-" Needed for vim-textobj-rubyblock
-NeoBundle 'kana/vim-textobj-user'
-" Adds e.g. vir for selecting block contents
-NeoBundle 'nelstrom/vim-textobj-rubyblock'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'slim-template/vim-slim'
-NeoBundle 'gabrielelana/vim-markdown'
 NeoBundle 'avakhov/vim-yaml'
-NeoBundle 'thoughtbot/vim-rspec'
-
+NeoBundle 'gabrielelana/vim-markdown'
 
 " *********************************************************************
-" Programming languages
+" JavaScript/TypeScript Stuff
 " *********************************************************************
-" Support for mustache/handlebars templates
-NeoBundle 'Slava/vim-spacebars'
-" General syntax highlighting
-NeoBundle 'scrooloose/syntastic'
 " Tern completer for JavaScript
 NeoBundle 'ternjs/tern_for_vim'
+" Support for jade/pug templates
+NeoBundle 'digitaltoad/vim-pug'
+" Support for mustache/handlebars templates
+NeoBundle 'Slava/vim-spacebars'
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
+NeoBundle 'Quramy/tsuquyomi'
+NeoBundle 'Quramy/vim-js-pretty-template'
+NeoBundle 'HerringtonDarkholme/yats.vim'
 
 call neobundle#end()
 
@@ -152,6 +156,16 @@ let g:ctrlp_max_depth = 40
 " ---- YouCompleteMe settings
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
+if !exists("g:ycm_semantic_triggers")
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
+" Unset YouCompleteMe entry switching with <tab>,
+" interferes with UltiSnips
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
+nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
+
 
 " ---- NERDTree plugin settings
 map <leader>n :NERDTreeTabsToggle<CR>
@@ -229,6 +243,8 @@ nmap sk :SplitjoinJoin<cr>
 let g:syntastic_error_symbol = "✗"
 " Disable slow linters
 let g:syntastic_mode_map = { 'passive_filetypes': ['slim', 'scss'] }
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
 
 "---- visSum plugin settings
 nmap <silent> <unique> <Leader>m <Plug>SumNum
@@ -420,8 +436,3 @@ set omnifunc=syntaxcomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-
-" Unset YouCompleteMe entry switching with <tab>,
-" interferes with UltiSnips
-let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
