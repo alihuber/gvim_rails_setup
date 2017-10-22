@@ -26,8 +26,12 @@ Start `nvim`, all plugins will be installed
 ### YouCompleteMe setup
 After plugin installation:  
 `cd ~/.config/nvim/bundle/YouCompleteMe`  
+Make sure `node` is in `$PATH`, then
 `./install.py --tern-completer`  
 For better omnicompletion re-generate ctags: `ctags -R --fields=+l *`
+
+### JavaScript development
+`npm install -g typescript eslint babel-eslint eslint-plugin-react`
 
 
 ## After either setup:

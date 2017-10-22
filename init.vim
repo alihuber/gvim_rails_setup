@@ -86,8 +86,10 @@ NeoBundle 'vim-scripts/visualrepeat'
 NeoBundle 'terryma/vim-expand-region'
 " Adds surroundings mnemonics ("Hello") cs"' change surroundings -> 'Hello'
 NeoBundle 'tpope/vim-surround'
-" Automatic closing of brackets
+" Automatically close brackets
 NeoBundle 'jiangmiao/auto-pairs'
+" Automatically close HTML/XML-tags
+NeoBundle 'alvan/vim-closetag'
 " Commenting is mapped to \\\ and gcc (gcap)
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-endwise'
@@ -118,9 +120,10 @@ NeoBundle 'airblade/vim-gitgutter'
 " *********************************************************************
 NeoBundle 'avakhov/vim-yaml'
 NeoBundle 'gabrielelana/vim-markdown'
+NeoBundle 'ap/vim-css-color'
 
 " *********************************************************************
-" JavaScript/TypeScript Stuff
+" JavaScript/TypeScript stuff
 " *********************************************************************
 " Tern completer for JavaScript
 NeoBundle 'ternjs/tern_for_vim'
@@ -128,6 +131,7 @@ NeoBundle 'ternjs/tern_for_vim'
 NeoBundle 'digitaltoad/vim-pug'
 " Support for mustache/handlebars templates
 NeoBundle 'Slava/vim-spacebars'
+" This is needed by tsuquyomi
 NeoBundle 'Shougo/vimproc.vim', {
 \ 'build' : {
 \     'windows' : 'tools\\update-dll-mingw',
@@ -137,9 +141,18 @@ NeoBundle 'Shougo/vimproc.vim', {
 \     'unix' : 'gmake',
 \    },
 \ }
+" TypeScript-autocompletion
 NeoBundle 'Quramy/tsuquyomi'
-NeoBundle 'Quramy/vim-js-pretty-template'
+" TypeScript syntax highlighting
 NeoBundle 'HerringtonDarkholme/yats.vim'
+" Pretty ES6 template strings
+NeoBundle 'Quramy/vim-js-pretty-template'
+
+" *********************************************************************
+" ReactJS-stuff
+" *********************************************************************
+NeoBundle 'mxw/vim-jsx'
+
 
 call neobundle#end()
 
@@ -152,6 +165,10 @@ NeoBundleCheck
 let g:ctrlp_map = '<leader>t'
 let g:ctrlp_max_files = 0
 let g:ctrlp_max_depth = 40
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_switch_buffer = 0
 
 " ---- YouCompleteMe settings
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -165,7 +182,6 @@ let g:ycm_semantic_triggers['typescript'] = ['.']
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
 nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
-
 
 " ---- NERDTree plugin settings
 map <leader>n :NERDTreeTabsToggle<CR>
@@ -220,48 +236,50 @@ let g:multicursor_quit = "<Esc>"
 " ---- TagBar plugin settings
 nmap <Leader>tb :TagbarToggle<CR>
 
-"---- Clever-f plugin settings
+" ---- Clever-f plugin settings
 let g:clever_f_fix_key_direction = 1
 
-"---- EasyAlign plugin settings
+" ---- EasyAlign plugin settings
 " Start interactive EasyAlign in visual mode (e.g. vip<a>)
 vmap a <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-"---- Vim-Markdown plugin settings
+" ---- Vim-Markdown plugin settings
 let g:markdown_enable_spell_checking = 0
 
-"---- Vim-Mustache-Handlebars plugin settings
+" ---- Vim-Mustache-Handlebars plugin settings
 let g:mustache_abbreviations = 1
 
-"---- SplitJoin plugin settings
+" ---- SplitJoin plugin settings
 nmap sj :SplitjoinSplit<cr>
 nmap sk :SplitjoinJoin<cr>
 
-"---- Syntastic plugin settings
+" ---- Syntastic plugin settings
 let g:syntastic_error_symbol = "✗"
 " Disable slow linters
 let g:syntastic_mode_map = { 'passive_filetypes': ['slim', 'scss'] }
 let g:tsuquyomi_disable_quickfix = 1
-let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
+" You shouldn't use 'tsc' checker
+let g:syntastic_typescript_checkers = ['tsuquyomi']
+let g:syntastic_javascript_checkers = ['eslint']
 
-"---- visSum plugin settings
+" ---- visSum plugin settings
 nmap <silent> <unique> <Leader>m <Plug>SumNum
 vmap <silent> <unique> <Leader>m <Plug>SumNum
 
-"--- Gitgutter plugin settings
+" ---- Gitgutter plugin settings
 let g:gitgutter_max_signs=1000
 
-"--- RSpec.vim mappings
-map <Leader>rr :call RunCurrentSpecFile()<CR>
-map <Leader>rn :call RunNearestSpec()<CR>
-map <Leader>rl :call RunLastSpec()<CR>
-map <Leader>ra :call RunAllSpecs()<CR>
-
-"--- tern plugin settings
+" ---- tern plugin settings
 let g:tern_map_keys=1
 let g:tern_show_argument_hints='on_hold'
+
+" ---- Allow JSX in normal JS files
+let g:jsx_ext_required = 1
+
+" ---- Closetag settings
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx'
 
 
 " *********************************************************************
@@ -286,7 +304,7 @@ set noswapfile
 " *********************************************************************
 " GUI and movement settings
 " *********************************************************************
-colorscheme mushroom
+colorscheme PaperColor
 set background=dark
 " Show entered commands in lower right corner like multipliers etc.
 set showcmd
@@ -433,6 +451,3 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " Omnicompletion settings
 set omnifunc=syntaxcomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
