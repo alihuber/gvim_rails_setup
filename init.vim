@@ -66,6 +66,8 @@ NeoBundle 'sjl/gundo.vim'
 NeoBundle 'vim-scripts/YankRing.vim'
 " Repeat line search with f, backwards with F
 NeoBundle 'rhysd/clever-f.vim'
+" <leader><leader><movement><char>
+NeoBundle 'easymotion/vim-easymotion'
 " Multiple cursors. Place cursor: <leader><d>, start editing: <leader><e>, finish with <Esc>
 NeoBundle 'paradigm/vim-multicursor'
 " Code snippets
